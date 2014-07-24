@@ -7,7 +7,7 @@ package main
 import (
     "fmt"
     "net/http"
-	"os"
+    "os"
     "strings"
 )
 
@@ -22,17 +22,17 @@ func (ipPong IpPong) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 }
 
 func readPort(args []string) string {
-	port := "5000"
-	if len(args) > 1 {
-		port = args[1]
-	}
-	fmt.Printf("Starting server on port %s\n", port)
+    port := "5000"
+    if len(args) > 1 {
+        port = args[1]
+    }
+    fmt.Printf("Starting server on port %s\n", port)
     return port
 }
 
 func main() {
     var ipResponse IpPong
     port := readPort(os.Args)
-	serve := "localhost:" + port
+    serve := "localhost:" + port
     http.ListenAndServe(serve, ipResponse)
 }
