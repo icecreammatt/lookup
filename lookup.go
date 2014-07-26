@@ -18,7 +18,7 @@ func (ipPong IpPong) ServeHTTP(w http.ResponseWriter, r *http.Request) {
     if ipAddress == "" {
         ipAddress = strings.Split(r.RemoteAddr, ":")[0]
     }
-    fmt.Fprint(w, ipAddress)
+    fmt.Fprintf(w, "%s\n", ipAddress)
 }
 
 func readPort(args []string) string {
