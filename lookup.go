@@ -33,6 +33,6 @@ func readPort(args []string) string {
 func main() {
     var ipResponse IpPong
     port := readPort(os.Args)
-    serve := "localhost:" + port
+    serve := "0.0.0.0:" + port
     http.ListenAndServe(serve, ipResponse)
 }
