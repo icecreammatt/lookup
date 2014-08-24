@@ -2,6 +2,7 @@ FROM icecreammatt/golang
 
 WORKDIR /gopath/src/github.com/icecreammatt/lookup
 ADD . /gopath/src/github.com/icecreammatt/lookup/
+RUN go get github.com/icecreammatt/lookup
 
 RUN go build
 RUN go install
