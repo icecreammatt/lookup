@@ -2,7 +2,7 @@
 image: icecreammatt/lookup
 script:
     - go build
-    - go test -v
+    - go test
 #deploy:
 #  bash:
 #    script:

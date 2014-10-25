@@ -20,7 +20,7 @@ func TestMain(t *testing.T) {
     response, err := ioutil.ReadAll(resp.Body)
     ipString := strings.Split(string(response), ":")
     if len(ipString) > 0 {
-        if ipString[0] != "127.0.0.1" {
+        if ipString[0] != "127.0.0.1\n" {
             t.Errorf("Response did not match\nValue: %s", response)
         }
     } else {
