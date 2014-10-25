@@ -1,0 +1,13 @@
+#image: http://my-docker-registry/my-docker-image:version
+image: icecreammatt/lookup
+script:
+    - go build
+    - go test -v
+#deploy:
+#  bash:
+#    script:
+#      - ./drone/deploy.sh
+#notify:
+#  email:
+#    recipients:
+#      - email@example.com
