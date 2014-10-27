@@ -12,7 +12,7 @@ then
     exit $status
 fi
 
-wrapdocker &
+./wrapdocker &
 sleep 5
 
 docker build -t icecreammatt/lookup .
