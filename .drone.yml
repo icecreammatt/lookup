@@ -1,12 +1,15 @@
 #image: http://my-docker-registry/my-docker-image:version
 image: icecreammatt/lookup
 script:
-    - go build
-    - go test
-#deploy:
-#  bash:
-#    script:
-#      - ./drone/deploy.sh
+    - ./.drone/build.sh
+    - ./.drone/stop_docker.sh
+#    - go build
+#    - go test
+deploy:
+    bash:
+        script:
+            - chmod 700 .drone/deploy.sh
+            - ./drone/deploy.sh
 #notify:
 #  email:
 #    recipients:
