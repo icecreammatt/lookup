@@ -2,7 +2,6 @@
 set -e
 ls -R /var/cache/drone/src
 cd /var/cache/drone/src/github.com/icecreammatt/lookup
-#cd /gopath/src/github.com/icecreammatt/lookup
 
 go build
 go test
@@ -13,7 +12,7 @@ then
     exit $status
 fi
 
-wrapdocker &
+/usr/local/bin/wrapdocker &
 sleep 5
 
 docker build -t icecreammatt/lookup .
