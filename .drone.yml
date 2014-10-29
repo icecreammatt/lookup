@@ -1,5 +1,5 @@
 #image: http://my-docker-registry/my-docker-image:version
-image: icecreammatt/lookup
+image: icecreammatt/drone-builder
 script:
     - ./.drone/build.sh
     - ./.drone/stop_docker.sh
