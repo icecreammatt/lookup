@@ -19,5 +19,5 @@ sleep 5
 
 docker build -t icecreammatt/lookup .
 
-docker login -u $DOCKERHUB_USERNAME -p $DOCKERHUB_PASSWORD
+docker login --username="$DOCKERHUB_USERNAME" --password="$DOCKERHUB_PASSWORD"
 docker push icecreammatt/lookup
