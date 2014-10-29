@@ -12,8 +12,6 @@ then
     exit $status
 fi
 
-#curl -s https://get.docker.io/ubuntu/ | sudo sh
-
 ./wrapdocker &
 sleep 5
 
