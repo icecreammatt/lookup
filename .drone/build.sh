@@ -3,10 +3,12 @@ set -e
 ls -R /var/cache/drone/src
 cd /var/cache/drone/src/github.com/icecreammatt/lookup
 
+echo $DOCKERHUB_USERNAME
+docker login --username="$DOCKERHUB_USERNAME" --password="$DOCKERHUB_PASSWORD"
+
 go build
 go test
 
-echo $DOCKERHUB_USERNAME
 
 status=$?
 if [ $status -ne 0 ]
@@ -18,6 +20,4 @@ fi
 sleep 5
 
 docker build -t icecreammatt/lookup .
-
-docker login --username="$DOCKERHUB_USERNAME" --password="$DOCKERHUB_PASSWORD"
 docker push icecreammatt/lookup
