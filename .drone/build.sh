@@ -18,4 +18,6 @@ fi
 sleep 5
 
 docker build -t icecreammatt/lookup .
+
+docker login -e $DOCKERHUB_EMAIL -u $DOCKERHUB_USERNAME -p $DOCKERHUB_PASSWORD
 docker push icecreammatt/lookup
