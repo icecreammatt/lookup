@@ -1,1 +1,1 @@
-docker build -t iplookup .
+docker build -t icecreammatt/lookup .
