@@ -14,11 +14,15 @@ import (
 type IpPong struct {}
 
 func (ipPong IpPong) ServeHTTP(w http.ResponseWriter, r *http.Request) {
-    ipAddress := r.Header.Get("X-Real-IP")
-    if ipAddress == "" {
-        ipAddress = strings.Split(r.RemoteAddr, ":")[0]
-    }
-    fmt.Fprintf(w, "%s\n", ipAddress)
+	if r.URL.Path == "/user-agent" {
+		fmt.Fprintf(w, "%s\n", r.UserAgent())
+	} else {
+		ipAddress := r.Header.Get("X-Real-IP")
+		if ipAddress == "" {
+			ipAddress = strings.Split(r.RemoteAddr, ":")[0]
+		}
+		fmt.Fprintf(w, "%s\n", ipAddress)
+	}
 }
 
 func readPort(args []string) string {
@@ -26,7 +30,6 @@ func readPort(args []string) string {
     if len(args) > 1 {
         port = args[1]
     }
-    fmt.Printf("Starting server on port %s\n", port)
     return port
 }
 

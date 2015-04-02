@@ -26,6 +26,20 @@ func TestMain(t *testing.T) {
     } else {
         t.Errorf("Response did not include port value %s", response)
     }
+
+	resp, err = http.Get("http://localhost:5000/user-agent")
+	if err != nil {
+		t.Errorf("Request Failed")
+		t.FailNow()
+	}
+	defer resp.Body.Close()
+
+	response, err = ioutil.ReadAll(resp.Body)
+	userAgent := string(response)
+	expected := "Go 1.1 package http\n"
+	if userAgent != expected {
+		t.Errorf("User Agent did not match expected value:%s:", response)
+	}
 }
 
 func TestReadPort(t *testing.T) {
