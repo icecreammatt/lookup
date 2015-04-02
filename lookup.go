@@ -5,13 +5,13 @@
 package main
 
 import (
-    "fmt"
-    "net/http"
-    "os"
-    "strings"
+	"fmt"
+	"net/http"
+	"os"
+	"strings"
 )
 
-type IpPong struct {}
+type IpPong struct{}
 
 func (ipPong IpPong) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	if r.URL.Path == "/user-agent" {
@@ -26,16 +26,16 @@ func (ipPong IpPong) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 }
 
 func readPort(args []string) string {
-    port := "5000"
-    if len(args) > 1 {
-        port = args[1]
-    }
-    return port
+	port := "5000"
+	if len(args) > 1 {
+		port = args[1]
+	}
+	return port
 }
 
 func main() {
-    var ipResponse IpPong
-    port := readPort(os.Args)
-    serve := "0.0.0.0:" + port
-    http.ListenAndServe(serve, ipResponse)
+	var ipResponse IpPong
+	port := readPort(os.Args)
+	serve := "0.0.0.0:" + port
+	http.ListenAndServe(serve, ipResponse)
 }
